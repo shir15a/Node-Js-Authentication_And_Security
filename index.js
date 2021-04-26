@@ -27,6 +27,18 @@ mongoose
   });
 
 
+  const jwt = require('jsonwebtoken')
+  const myFun = async ()=>{
+    const token = jwt.sign({_id : 'abc123'}, 'thisismynewcourse', {
+      expiresIn :'7d'
+    })
+    console.log(token);
+
+    const data = jwt.verify(token, 'thisismynewcourse');
+    console.log(data);
+  }
+
+  myFun()
 //Connected to server
 app.listen(process.env.PORT || 8000, () => {
   console.log(`Application start at ${process.env.PORT || 8000}`);

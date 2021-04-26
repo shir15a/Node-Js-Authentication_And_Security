@@ -7,6 +7,7 @@ router
     .get("/", usersController.getAll)
     .get("/:id", usersController.getOne)
     .post("/", usersController.create)
+    .post("/login", usersController.login)
     .put("/:id", usersController.update)
     .delete("/:id", usersController.remove)
 
