@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const auth = require("../middleware/auth");
 
 const usersController = require("../controllers/users.controllers");
 
 router
-    .get("/", usersController.getAll)
-    .get("/:id", usersController.getOne)
+    .get("/",auth, usersController.getAll)
+    .get("/:id", usersController.getprofile)
     .post("/", usersController.create)
     .post("/login", usersController.login)
     .put("/:id", usersController.update)

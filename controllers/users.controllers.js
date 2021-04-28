@@ -11,20 +11,24 @@ const getAll = async (req, res) => {
     }
 }
 
-const getOne = async (req, res) => {
-    const _id = req.params.id
+//run only if user authenticated
+const getprofile = async (req, res) => {
+    // const _id = req.params.id
 
-    try {
-        const user = await UserModel.findById(_id)
+    // try {
+    //     const user = await UserModel.findById(_id)
 
-        if (!user) {
-            return res.status(404).send()
-        }
+    //     if (!user) {
+    //         return res.status(404).send()
+    //     }
 
-        res.send(user)
-    } catch (e) {
-        res.status(500).send()
-    }
+    //     res.send(user)
+    // } catch (e) {
+    //     res.status(500).send()
+    // }
+
+    res.send(req.user)
+
 }
 
 const create = async (req, res) => {
@@ -92,7 +96,7 @@ const login = async (req, res) => {
 
 module.exports = {
     getAll,
-    getOne,
+    getprofile,
     create,
     update,
     remove,
