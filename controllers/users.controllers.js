@@ -94,11 +94,30 @@ const login = async (req, res) => {
     }
 }
 
+const logout = async(req, res)=>{
+    try{
+        req.user.token = req.user.tokens.filter((token)=>{
+            return token.token!== req.token;
+        })
+        await req.user.save();
+
+        res.send()
+    }
+    catch(e){
+        return res.status(500).send;
+    }
+}
+
+const logoutAll = async(req, res)=>{
+}
+
 module.exports = {
     getAll,
     getprofile,
     create,
     update,
     remove,
-    login
+    login,
+    logout,
+    logoutAll
 };
